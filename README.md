@@ -38,3 +38,6 @@ Este problema se modelará como un problema de satisfacción de restricciones, d
  <li> $xijk ∈ {0, 1}$, donde $(i, j, k)$ representa los índices correspondientes a hospitales, camas en ese hospital y pacientes, respectivamente. Si la cama $j$ del hospital $i$ está ocupada por el paciente $k$, entonces $xijk = 1$.</li>
  </ul>
 </p>
+
+<p><b>Restricciones Duras:</b></p>
+
