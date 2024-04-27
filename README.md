@@ -46,7 +46,7 @@ Este problema se modelará como un problema de satisfacción de restricciones, d
  <li>A cada persona se le debe asignar a lo máximo una cama.</li>
 </uL>
 
-<p><b>Restricciones Suaves:</b></p>
+<p><strong>Restricciones Suaves:</strong></p>
 <ul>
  <li>Se debe intentar ubicar a cada persona infectada en una cama.</li>
  <li>Se debe priorizar que cada persona sea tratada en el hospital más cercano.</li>
