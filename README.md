@@ -93,3 +93,52 @@ Las restricciones pueden dividirse en restricciones duras y suaves:
 El modelo formal del CSP para este problema, `{X, D, C}`, captura la complejidad de gestionar los recursos hospitalarios durante una pandemia. Este modelo asegura que las soluciones generadas por algoritmos como Google OR-Tools sean tanto factibles como optimizadas según las restricciones definidas.
 
 </p>
+
+### Code
+<p align="justify">
+ Código desarrollado por el grupo tomando en cuenta el desarrollo del modelo formal:
+
+ 
+ ```python
+ from ortools.sat.python import cp_model
+
+# Modelo
+model = cp_model.CpModel()
+
+# Variables
+x = {}  # x[(i, k)] = 1 if patient k is assigned to a bed in hospital i
+for index, hospital in hospital_data.iterrows():
+    for k in patients_df['patient_id']:
+        x[(hospital['CODIGO'], k)] = model.NewBoolVar(f'x[{hospital["CODIGO"]},{k}]')
+
+# Restricciones
+# Cada paciente es asignado a lo más a un hospital
+for k in patients_df['patient_id']:
+    model.Add(sum(x[(i, k)] for i in hospital_data['CODIGO']) <= 1)
+
+# Cada hospital no excede su capacidad de camas
+for index, hospital in hospital_data.iterrows():
+    # Aseguramos que la capacidad es un entero
+    cap = int(hospital['ZNC_MONT_CAM_DISPONIBLE'])
+    model.Add(sum(x[(hospital['CODIGO'], k)] for k in patients_df['patient_id']) <= cap)
+
+# Objetivo: Maximizar el número de pacientes asignados a camas, ponderado por la gravedad
+model.Maximize(sum(x[(i, k)] * patients_df.loc[patients_df['patient_id'] == k, 'severity'].iloc[0]
+                   for i in hospital_data['CODIGO'] for k in patients_df['patient_id']))
+
+# Resolver el modelo
+solver = cp_model.CpSolver()
+status = solver.Solve(model)
+
+# Verificar el estado de la solución y mostrar las asignaciones
+if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
+    print("Pacientes asignados a hospitales:")
+    for index, hospital in hospital_data.iterrows():
+        for k in patients_df['patient_id']:
+            if solver.Value(x[(hospital['CODIGO'], k)]) == 1:
+                print(f'Hospital: {hospital["NOMBRE"]}, Paciente ID: {k}, Severidad: {patients_df.loc[k, "severity"]}')
+else:
+    print("No se encontró solución.")
+
+```
+</p>
