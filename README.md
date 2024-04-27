@@ -17,3 +17,15 @@
  
  <h3 align="center">CICLO 2024-1</h3>
 
+### Definición del problema
+
+<p align="justifiy">
+ El problema que enfrentamos surge de la necesidad de gestionar eficazmente los recursos hospitalarios durante una pandemia que está en aumento. El objetivo principal es desarrollar un algoritmo capaz de asignar a las personas infectadas con hospitales, teniendo en cuenta múltiples criterios como la gravedad de la enfermedad, la edad del paciente, la ubicación geográfica, la capacidad del hospital y la disponibilidad de equipo médico necesario.
+Para simplificar el problema, consideraremos inicialmente cuatro parámetros fundamentales:
+ <ol>
+  <li>Ubicación de las personas infectadas: Este parámetro ayuda a determinar la proximidad de los pacientes a los diferentes hospitales.</li>
+  <li>Gravedad de la infección de las personas: Es crucial para priorizar el tratamiento a quienes tienen condiciones más graves.</li>
+  <li>Ubicación de los hospitales: Fundamental para asignar a los pacientes al hospital más cercano y adecuado.</li>
+  <li>Número de camas disponibles en cada hospital: Esencial para asegurar que hay capacidad suficiente para atender a los pacientes.</li>
+ </ol>
+</p>
