@@ -32,7 +32,7 @@
 
 ### Marco Teórico
 
-<p align="justify>
+<p align="justify">
 Este problema se modelará como un problema de satisfacción de restricciones, donde se definen variables que representan si una cama específica en un hospital está ocupada por un paciente particular. Las variables se definen de la siguiente manera:
  <ul>
  <li> $xijk ∈ {0, 1}$, donde $(i, j, k)$ representa los índices correspondientes a hospitales, camas en ese hospital y pacientes, respectivamente. Si la cama $j$ del hospital $i$ está ocupada por el paciente $k$, entonces &xijk = 1&.</li>
