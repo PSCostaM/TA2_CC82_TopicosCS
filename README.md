@@ -157,3 +157,44 @@ else:
 </p>
 
 ## Conclusiones
+
+### Promising Results
+
+### Why use Constraint Programming for this kind of problems?
+
+<p align="justify">
+ Usar Constraing Programming en el tipo de problema de asignación de pacientes a hospitales durante una pandemia es relevante por varias razones, y aunque las técnicas de aprendizaje automático (Machine Learning, ML) también podrían abordar este tipo de problemas, hay diferencias clave en cómo cada enfoque puede ser aplicado y por qué CP puede ser más adecuado en ciertos contextos:
+</p>
+
+#### Razones para user Constraint Programming:
+<p align="justify">
+<ol>
+ <li><b>Especificidad de las Restricciones:</b> Constraint Programming es excepcionalmente útil en problemas donde las restricciones juegan un papel crítico. Puede manejar de manera eficiente múltiples y complejas restricciones como la capacidad limitada de los hospitales, la proximidad geográfica, y la priorización basada en la gravedad de la condición de los pacientes. CP busca soluciones que satisfagan todas estas restricciones de manera simultánea.</li>
+ <li><b>Soluciones Óptimas y Completitud:</b> Constraint Programming es capaz de encontrar soluciones óptimas y garantizar que se respeten todas las restricciones duras. Si una solución existe, CP la encontrará, y si no, proporcionará pruebas de que no hay solución bajo las restricciones dadas.</li>
+ <li><b>Flexibilidad en la Modelización:</b> Permite modificar fácilmente las restricciones y parámetros sin necesidad de reentrenar o reajustar modelos, lo cual es una ventaja significativa en situaciones dinámicas como una pandemia donde las condiciones cambian rápidamente.</li>
+</ol>
+</p>
+
+#### Uso de Técnicas de ML
+
+<p align="justify">
+ El aprendizaje automático podría aplicarse para predecir necesidades, comportamientos o para optimizar ciertos aspectos del problema, como:
+
+ <ul>
+  <li><b>Predicción de la Demanda: </b> Modelos de ML pueden prever la cantidad de pacientes que requerirán hospitalización, lo cual ayuda a planificar y asignar recursos.</li>
+  <li><b>Optimización de Recursos: </b>Algoritmos de ML pueden ayudar a optimizar la distribución de recursos médicos limitados de manera más eficiente, basándose en patrones de uso y demanda.</li>
+ </ul>
+</p>
+
+#### ¿Por qué no usar solo ML?
+
+<p align="justify">
+ <ul>
+  <li>Dependencia de Datos: ML requiere grandes volúmenes de datos históricos y relevantes para entrenar modelos efectivos. En situaciones emergentes o con datos escasos (como puede ser el inicio de una nueva pandemia), este requisito puede ser un gran desafío.</li>
+  <li>Incapacidad para Manejar Restricciones Duras: ML es muy bueno para identificar patrones y hacer predicciones, pero no es naturalmente adecuado para manejar restricciones duras y específicas sin una considerable adaptación y supervisión.</li>
+  <li>Interpretabilidad y Verificabilidad: Las soluciones de ML a menudo no son fácilmente interpretables, lo cual puede ser un problema en aplicaciones médicas y de salud pública donde la transparencia en la toma de decisiones es crucial.</li>
+ </ul>
+ <p>
+  Aunque ML puede complementar a la CP, especialmente en aspectos de predicción y análisis de tendencias, CP es más adecuado para garantizar que todas las restricciones operativas y médicas se cumplan. En problemas críticos como la asignación de recursos en una pandemia, la capacidad de CP para ofrecer garantías de completitud y respeto de restricciones específicas es invaluable. Por lo tanto, usar CP, posiblemente en conjunto con ML, ofrece una combinación poderosa para abordar este tipo de desafíos complejos y dinámicos.
+ </p>
+</p>
