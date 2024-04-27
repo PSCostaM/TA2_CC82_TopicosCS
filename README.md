@@ -41,3 +41,8 @@ Este problema se modelará como un problema de satisfacción de restricciones, d
 
 <p><b>Restricciones Duras:</b></p>
 
+<uL>
+ <li>Cada cama puede estar ocupada por a lo máximo una persona.</li>
+ <li>A cada persona se le debe asignar a lo máximo una cama.</li>
+</uL>
+
