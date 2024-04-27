@@ -65,27 +65,27 @@ Este problema se presenta en el contexto de la asignación de pacientes infectad
 ### Variables `X`
 Las variables representan las decisiones que deben tomarse:
 
-- $$X = \{x_{ijk} | i \in H, j \in Bi, k \in P\}$$
-  - Donde $$H$$ es el conjunto de hospitales, $$Bi$$ es el conjunto de camas en el hospital $$i$$, y $$P$$ es el conjunto de pacientes.
+- $X = \{x_{ijk} | i \in H, j \in Bi, k \in P\}$
+  - Donde $H$ es el conjunto de hospitales, $Bi$ es el conjunto de camas en el hospital $i$, y $P$ es el conjunto de pacientes.
 
 ### Dominios `D`
 El dominio de cada variable especifica los posibles valores que la variable puede tomar:
 
-- $$D(x_{ijk}) = \{0, 1\}$$
-  - $$1$$ significa que la cama $$j$$ en el hospital $$i$$ está asignada al paciente $$k$$; $$0$$ significa que no lo está.
+- $D(x_{ijk}) = \{0, 1\}$
+  - $1$ significa que la cama $j$ en el hospital $i$ está asignada al paciente $k$; $0$ significa que no lo está.
 
 ### Restricciones `C`
 Las restricciones pueden dividirse en restricciones duras y suaves:
 
 #### Restricciones Duras
 - **Unicidad de la Cama:** Cada cama solo puede tener un paciente.
-  - $$\forall i \in H, \forall j \in Bi, \sum_{k \in P} x_{ijk} \leq 1$$
+  - $\forall i \in H, \forall j \in Bi, \sum_{k \in P} x_{ijk} \leq 1$
 - **Unicidad del Paciente:** Cada paciente solo puede ser asignado a una cama.
-  - $$\forall k \in P, \sum_{i \in H} \sum_{j \in Bi} x_{ijk} \leq 1$$
+  - $\forall k \in P, \sum_{i \in H} \sum_{j \in Bi} x_{ijk} \leq 1$
 
 #### Restricciones Suaves
 - **Asignar Pacientes a Camas:** Idealmente, cada paciente debería ser asignado a una cama.
-  - $$\forall k \in P, \sum_{i \in H} \sum_{j \in Bi} x_{ijk} = 1$$
+  - $\forall k \in P, \sum_{i \in H} \sum_{j \in Bi} x_{ijk} = 1$
 - **Proximidad:** Los pacientes deberían ser asignados al hospital más cercano.
 - **Prioridad por Gravedad:** Los pacientes en condiciones graves deberían ser priorizados en la asignación de camas cuando las camas son escasas.
 
