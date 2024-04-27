@@ -159,6 +159,9 @@ else:
 ## Conclusiones
 
 ### Promising Results
+<p align="justify">
+Constraint Programming es inherentemente adecuada para garantizar que todas las restricciones, tanto duras como suaves, se cumplan de manera rigurosa. Esto es crucial en situaciones médicas donde no se puede comprometer, por ejemplo, la asignación de un número limitado de camas a una gran cantidad de pacientes, asegurando que se respeten las normativas de capacidad y prioridad médica.
+</p>
 
 ### Why use Constraint Programming for this kind of problems?
 
@@ -198,3 +201,5 @@ else:
   Aunque ML puede complementar a la CP, especialmente en aspectos de predicción y análisis de tendencias, CP es más adecuado para garantizar que todas las restricciones operativas y médicas se cumplan. En problemas críticos como la asignación de recursos en una pandemia, la capacidad de CP para ofrecer garantías de completitud y respeto de restricciones específicas es invaluable. Por lo tanto, usar CP, posiblemente en conjunto con ML, ofrece una combinación poderosa para abordar este tipo de desafíos complejos y dinámicos.
  </p>
 </p>
+
+
