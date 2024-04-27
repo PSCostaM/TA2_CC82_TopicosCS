@@ -100,45 +100,58 @@ El modelo formal del CSP para este problema, `{X, D, C}`, captura la complejidad
 
  
  ```python
- from ortools.sat.python import cp_model
+from ortools.sat.python import cp_model
 
 # Modelo
 model = cp_model.CpModel()
 
+# Convertir DataFrame a diccionario para un acceso más rápido
+hospital_beds = {(i, j): int(hospital['ZNC_MONT_CAM_TOTAL'])
+                 for i, hospital in simplified_dataset1.iterrows()
+                 for j in range(int(hospital['ZNC_MONT_CAM_TOTAL']))}
+
 # Variables
-x = {}  # x[(i, k)] = 1 if patient k is assigned to a bed in hospital i
-for index, hospital in hospital_data.iterrows():
-    for k in patients_df['patient_id']:
-        x[(hospital['CODIGO'], k)] = model.NewBoolVar(f'x[{hospital["CODIGO"]},{k}]')
+x = {}  # x[(i, j, k)] = 1 si el paciente k está asignado a la cama j en el hospital i
+for (i, j), beds in hospital_beds.items():
+    for k in simplified_dataset2.index:
+        x[(i, j, k)] = model.NewBoolVar(f'x[{i},{j},{k}]')
 
 # Restricciones
-# Cada paciente es asignado a lo más a un hospital
-for k in patients_df['patient_id']:
-    model.Add(sum(x[(i, k)] for i in hospital_data['CODIGO']) <= 1)
+# 1. Cada paciente es asignado a lo más a una cama en un hospital
+for k in simplified_dataset2.index:
+    model.Add(sum(x[(i, j, k)] for (i, j) in hospital_beds) <= 1)
 
-# Cada hospital no excede su capacidad de camas
-for index, hospital in hospital_data.iterrows():
-    # Aseguramos que la capacidad es un entero
-    cap = int(hospital['ZNC_MONT_CAM_DISPONIBLE'])
-    model.Add(sum(x[(hospital['CODIGO'], k)] for k in patients_df['patient_id']) <= cap)
+# 2. Cada cama en un hospital es asignada a lo más a un paciente
+for (i, j) in hospital_beds:
+    model.Add(sum(x[(i, j, k)] for k in simplified_dataset2.index) <= 1)
 
-# Objetivo: Maximizar el número de pacientes asignados a camas, ponderado por la gravedad
-model.Maximize(sum(x[(i, k)] * patients_df.loc[patients_df['patient_id'] == k, 'severity'].iloc[0]
-                   for i in hospital_data['CODIGO'] for k in patients_df['patient_id']))
+# Objetivo: Maximizar el número de pacientes asignados a camas
+model.Maximize(sum(x[(i, j, k)]
+                   for (i, j) in hospital_beds for k in simplified_dataset2.index))
 
 # Resolver el modelo
 solver = cp_model.CpSolver()
+solver.parameters.max_time_in_seconds = 300  # Límite de tiempo de 5 minutos
+solver.parameters.log_search_progress = True  # Activar log de progreso
+
 status = solver.Solve(model)
 
+if status == cp_model.OPTIMAL:
+    print("Solución óptima encontrada.")
+elif status == cp_model.FEASIBLE:
+    print("Se encontró una solución factible.")
+else:
+    print("No se pudo encontrar una solución óptima o factible en el tiempo dado.")
 # Verificar el estado de la solución y mostrar las asignaciones
 if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
     print("Pacientes asignados a hospitales:")
-    for index, hospital in hospital_data.iterrows():
-        for k in patients_df['patient_id']:
-            if solver.Value(x[(hospital['CODIGO'], k)]) == 1:
-                print(f'Hospital: {hospital["NOMBRE"]}, Paciente ID: {k}, Severidad: {patients_df.loc[k, "severity"]}')
+    for (i, j) in hospital_beds:
+        for k in simplified_dataset2.index:
+            if solver.Value(x[(i, j, k)]) == 1:
+                print(f'Hospital: {simplified_dataset1.loc[i, "NOMBRE"]}, Cama: {j}, Paciente ID: {k}')
 else:
     print("No se encontró solución.")
+
 
 ```
 </p>
