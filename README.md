@@ -17,7 +17,7 @@
  
  <h3 align="center">CICLO 2024-1</h3>
 
-### Definición del problema
+## Definición del problema
 
 <p align="justify">
  El problema que enfrentamos surge de la necesidad de gestionar eficazmente los recursos hospitalarios durante una pandemia que está en aumento. El objetivo principal es desarrollar un algoritmo capaz de asignar a las personas infectadas con hospitales, teniendo en cuenta múltiples criterios como la gravedad de la enfermedad, la edad del paciente, la ubicación geográfica, la capacidad del hospital y la disponibilidad de equipo médico necesario.
@@ -30,7 +30,7 @@
  </ol>
 </p>
 
-### Marco Teórico
+## Marco Teórico
 
 <p align="justify">
  Este problema se modelará como un problema de satisfacción de restricciones, donde se definen variables que representan si una cama específica en un hospital está ocupada por un paciente particular. Las variables se definen de la siguiente manera:
@@ -54,8 +54,42 @@
  </ul>
  
  <p>
-  El reto está en diseñar un algoritmo que utilice estas variables y restricciones para optimizar la asignación de recursos y asegurar que los pacientes reciban el tratamiento adecuado de la manera más eficiente posible. Utilizaremos Google Optimization Tools (OR-Tools), un conjunto de software de código abierto para la optimización combinatoria, para implementar y resolver este modelo.$∀ i ∈ H, ∀ j ∈ Bi, Σ_{k ∈ P} x_{ijk} ≤ 1$
+  El reto está en diseñar un algoritmo que utilice estas variables y restricciones para optimizar la asignación de recursos y asegurar que los pacientes reciban el tratamiento adecuado de la manera más eficiente posible. Utilizaremos Google Optimization Tools (OR-Tools), un conjunto de software de código abierto para la optimización combinatoria, para implementar y resolver este modelo.
  </p>
  </p>
+
+## Modelo Formal del Problema de Satisfacción de Restricciones (CSP)
+
+Este problema se presenta en el contexto de la asignación de pacientes infectados a camas de hospital durante una pandemia. El CSP se define formalmente por:
+
+### Variables `X`
+Las variables representan las decisiones que deben tomarse:
+
+- `X = {x_{ijk} | i ∈ H, j ∈ Bi, k ∈ P}`
+  - Donde `H` es el conjunto de hospitales, `Bi` es el conjunto de camas en el hospital `i`, y `P` es el conjunto de pacientes.
+
+### Dominios `D`
+El dominio de cada variable especifica los posibles valores que la variable puede tomar:
+
+- `D(x_{ijk}) = {0, 1}`
+  - `1` significa que la cama `j` en el hospital `i` está asignada al paciente `k`; `0` significa que no lo está.
+
+### Restricciones `C`
+Las restricciones pueden dividirse en restricciones duras y suaves:
+
+#### Restricciones Duras
+- **Unicidad de la Cama:** Cada cama solo puede tener un paciente.
+  - `∀ i ∈ H, ∀ j ∈ Bi, Σ_{k ∈ P} x_{ijk} ≤ 1`
+- **Unicidad del Paciente:** Cada paciente solo puede ser asignado a una cama.
+  - `∀ k ∈ P, Σ_{i ∈ H} Σ_{j ∈ Bi} x_{ijk} ≤ 1`
+
+#### Restricciones Suaves
+- **Asignar Pacientes a Camas:** Idealmente, cada paciente debería ser asignado a una cama.
+  - `∀ k ∈ P, Σ_{i ∈ H} Σ_{j ∈ Bi} x_{ijk} = 1`
+- **Proximidad:** Los pacientes deberían ser asignados al hospital más cercano.
+- **Prioridad por Gravedad:** Los pacientes en condiciones graves deberían ser priorizados en la asignación de camas cuando las camas son escasas.
+
+El modelo formal del CSP para este problema, `{X, D, C}`, captura la complejidad de gestionar los recursos hospitalarios durante una pandemia. Este modelo asegura que las soluciones generadas por algoritmos como Google OR-Tools sean tanto factibles como optimizadas según las restricciones definidas.
+
 
 
