@@ -33,25 +33,29 @@
 ### Marco Teórico
 
 <p align="justify">
-Este problema se modelará como un problema de satisfacción de restricciones, donde se definen variables que representan si una cama específica en un hospital está ocupada por un paciente particular. Las variables se definen de la siguiente manera:
+ Este problema se modelará como un problema de satisfacción de restricciones, donde se definen variables que representan si una cama específica en un hospital está ocupada por un paciente particular. Las variables se definen de la siguiente manera:
+  <ul>
+  <li> $xijk ∈ {0, 1}$, donde $(i, j, k)$ representa los índices correspondientes a hospitales, camas en ese hospital y pacientes, respectivamente. Si la cama $j$ del hospital $i$ está ocupada por el paciente $k$, entonces $xijk = 1$.</li>
+  </ul>
+ 
+ 
+ <p><b>Restricciones Duras:</b></p>
+ 
+ <uL>
+  <li>Cada cama puede estar ocupada por a lo máximo una persona.</li>
+  <li>A cada persona se le debe asignar a lo máximo una cama.</li>
+ </uL>
+ 
+ <p><b>Restricciones Suaves:</b></p>
  <ul>
- <li> $xijk ∈ {0, 1}$, donde $(i, j, k)$ representa los índices correspondientes a hospitales, camas en ese hospital y pacientes, respectivamente. Si la cama $j$ del hospital $i$ está ocupada por el paciente $k$, entonces $xijk = 1$.</li>
+  <li>Se debe intentar ubicar a cada persona infectada en una cama.</li>
+  <li>Se debe priorizar que cada persona sea tratada en el hospital más cercano.</li>
+  <li>Las personas con condiciones más graves deben ser priorizadas cuando no hay suficientes camas disponibles.</li>
  </ul>
-</p>
-
-<p><b>Restricciones Duras:</b></p>
-
-<uL>
- <li>Cada cama puede estar ocupada por a lo máximo una persona.</li>
- <li>A cada persona se le debe asignar a lo máximo una cama.</li>
-</uL>
-
-<p><strong>Restricciones Suaves:</strong></p>
-<ul>
- <li>Se debe intentar ubicar a cada persona infectada en una cama.</li>
- <li>Se debe priorizar que cada persona sea tratada en el hospital más cercano.</li>
- <li>Las personas con condiciones más graves deben ser priorizadas cuando no hay suficientes camas disponibles.</li>
-</ul>
-
+ 
+ <p>
+  El reto está en diseñar un algoritmo que utilice estas variables y restricciones para optimizar la asignación de recursos y asegurar que los pacientes reciban el tratamiento adecuado de la manera más eficiente posible. Utilizaremos Google Optimization Tools (OR-Tools), un conjunto de software de código abierto para la optimización combinatoria, para implementar y resolver este modelo.
+ </p>
+ </p>
 
 
