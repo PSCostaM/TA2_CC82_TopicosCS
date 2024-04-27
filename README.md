@@ -21,7 +21,7 @@
 
 <p align="justifiy">
  El problema que enfrentamos surge de la necesidad de gestionar eficazmente los recursos hospitalarios durante una pandemia que está en aumento. El objetivo principal es desarrollar un algoritmo capaz de asignar a las personas infectadas con hospitales, teniendo en cuenta múltiples criterios como la gravedad de la enfermedad, la edad del paciente, la ubicación geográfica, la capacidad del hospital y la disponibilidad de equipo médico necesario.
-<a>Para simplificar el problema, consideraremos inicialmente cuatro parámetros fundamentales:</a>
+<p>Para simplificar el problema, consideraremos inicialmente cuatro parámetros fundamentales:</p>
  <ol>
   <li>Ubicación de las personas infectadas: Este parámetro ayuda a determinar la proximidad de los pacientes a los diferentes hospitales.</li>
   <li>Gravedad de la infección de las personas: Es crucial para priorizar el tratamiento a quienes tienen condiciones más graves.</li>
