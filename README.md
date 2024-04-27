@@ -59,6 +59,7 @@
  </p>
 
 ## Modelo Formal del Problema de Satisfacción de Restricciones (CSP)
+<p align="justify">
 
 Este problema se presenta en el contexto de la asignación de pacientes infectados a camas de hospital durante una pandemia. El CSP se define formalmente por:
 
@@ -90,3 +91,5 @@ Las restricciones pueden dividirse en restricciones duras y suaves:
 - **Prioridad por Gravedad:** Los pacientes en condiciones graves deberían ser priorizados en la asignación de camas cuando las camas son escasas.
 
 El modelo formal del CSP para este problema, `{X, D, C}`, captura la complejidad de gestionar los recursos hospitalarios durante una pandemia. Este modelo asegura que las soluciones generadas por algoritmos como Google OR-Tools sean tanto factibles como optimizadas según las restricciones definidas.
+
+</p>
