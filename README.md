@@ -54,7 +54,7 @@
  </ul>
  
  <p>
-  El reto está en diseñar un algoritmo que utilice estas variables y restricciones para optimizar la asignación de recursos y asegurar que los pacientes reciban el tratamiento adecuado de la manera más eficiente posible. Utilizaremos Google Optimization Tools (OR-Tools), un conjunto de software de código abierto para la optimización combinatoria, para implementar y resolver este modelo.`∀ i ∈ H, ∀ j ∈ Bi, Σ_{k ∈ P} x_{ijk} ≤ 1`
+  El reto está en diseñar un algoritmo que utilice estas variables y restricciones para optimizar la asignación de recursos y asegurar que los pacientes reciban el tratamiento adecuado de la manera más eficiente posible. Utilizaremos Google Optimization Tools (OR-Tools), un conjunto de software de código abierto para la optimización combinatoria, para implementar y resolver este modelo.$∀ i ∈ H, ∀ j ∈ Bi, Σ_{k ∈ P} x_{ijk} ≤ 1$
  </p>
  </p>
 
