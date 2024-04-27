@@ -3,7 +3,7 @@
  <h2 align="center">Universidad Peruana de Ciencias Aplicadas</h2>
 <h2 align="center">Tópicos en Ciencias de la Computación - CC58</h2>
  
-<h3 align="center"> TB1</h3>
+<h3 align="center"> TB2 </h3>
  
 <h3 align="center"> Sección</h3>
 <h3 align="center"> Profesor: Luis Martín Canaval Sanchez</h3>
